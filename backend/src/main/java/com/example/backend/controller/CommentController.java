@@ -39,7 +39,7 @@ public class CommentController {
         Comment comment = commentService.getComment(id).orElseThrow(() -> new ResourceNotFoundException("Comment not found for this id :: " + id));
         return ResponseEntity.ok().body(comment);
     }
-    // In CommentController.java
+  
 
 
 

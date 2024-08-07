@@ -1,0 +1,52 @@
+<!-- 
+   <div class="container mt-5">
+    <h2 class="mb-3">Issue List</h2>
+
+    <button class="btn btn-primary mb-3" (click)="addIssue()">Add Issue</button>
+    
+    <div *ngIf="issues.length > 0; else noIssues">
+      <div class="card mb-3" *ngFor="let issue of issues">
+        <div class="card-body">
+          <h5 class="card-title">{{ issue.title }}</h5>
+          <p class="card-text">{{ issue.description }}</p>
+          <p class="card-text">
+            <small class="text-muted">{{ issue.resolved ? 'Resolved' : 'Unresolved' }}</small>
+          </p>
+        
+          <button class="btn btn-link" (click)="viewComments(issue.id)">View Comments</button>
+        
+          <button class="btn btn-link" (click)="editIssue(issue.id)">Edit Issue</button>
+        </div>
+      </div>
+    </div>
+    <ng-template #noIssues>
+      <p>No issues found.</p>
+    </ng-template>
+  </div> -->
+
+  <div class="container mt-5">
+    <h2 class="mb-3">Issue List</h2>
+    <!-- Add Issue Button -->
+    <button class="btn btn-primary mb-3" (click)="addIssue()">Add Issue</button>
+    
+    <div *ngIf="issues.length > 0; else noIssues">
+      <div class="card mb-3" *ngFor="let issue of issues">
+        <div class="card-body">
+          <h5 class="card-title">{{ issue.title }}</h5>
+          <p class="card-text">{{ issue.description }}</p>
+          <p class="card-text">
+            <small class="text-muted">{{ issue.resolved ? 'Resolved' : 'Unresolved' }}</small>
+          </p>
+           
+        
+          <button class="btn btn-secondary" (click)="viewComments(issue.id)">View Comments</button>
+          <button class="btn btn-link" (click)="editIssue(issue.id)">Edit Issue</button>
+          <button class="btn btn-danger ml-2" (click)="deleteIssue(issue.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+    <ng-template #noIssues>
+      <p>No issues found.</p>
+    </ng-template>
+  </div>
+  

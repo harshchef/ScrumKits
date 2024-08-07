@@ -1,0 +1,59 @@
+<!-- 
+   <div class="container mt-3">
+    <h3 class="mb-3">Comments</h3>
+    <button class="btn btn-primary mb-3" (click)="addComment()">Add Comment</button>
+    <div *ngIf="comments.length > 0; else noComments">
+      <div class="card mb-2" *ngFor="let comment of comments">
+        <div class="card-body">
+          <div class="card-text">
+            <p class="card-text">{{ comment.id }}.  {{ comment.text }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noComments>
+      <p>No comments found.</p>
+    </ng-template>
+  </div>
+   -->
+<!--  -->
+<!--   
+
+   <div class="container mt-3">
+    <h3 class="mb-3">Comments</h3>
+    <button class="btn btn-primary mb-3" (click)="addComment()">Add Comment</button>
+    <div *ngIf="comments.length > 0; else noComments">
+      <div class="card mb-2" *ngFor="let comment of comments">
+        <div class="card-body">
+          <div class="card-text">
+            <p class="card-text">{{ comment.id }}.  {{ comment.text }}</p>
+            <button class="btn btn-danger" (click)="deleteComment(comment.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noComments>
+      <p>No comments found.</p>
+    </ng-template>
+  </div> -->
+
+
+  <div class="container mt-3">
+    <h3 class="mb-3">Comments</h3>
+    <button class="btn btn-primary mb-3" (click)="addComment()">Add Comment</button>
+    <div *ngIf="comments.length > 0; else noComments">
+      <div class="card mb-2" *ngFor="let comment of comments">
+        <div class="card-body">
+          <div class="card-text">
+            <p class="card-text">{{ comment.id }}. {{ comment.text }}</p>
+            <button class="btn btn-primary mr-2" (click)="editComment(comment.id)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteComment(comment.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noComments>
+      <p>No comments found.</p>
+    </ng-template>
+  </div>
+  

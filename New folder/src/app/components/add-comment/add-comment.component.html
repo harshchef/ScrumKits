@@ -1,0 +1,12 @@
+<div class="container mt-5">
+    <h2 class="mb-3">Add Comment</h2>
+    <form (ngSubmit)="saveComment()">
+      <div class="form-group">
+        <label for="text">Comment</label>
+     <p> {{comment.issueId}}</p>
+        <textarea class="form-control" id="text" [(ngModel)]="comment.text" name="text" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Save</button>
+    </form>
+  </div>
+  
