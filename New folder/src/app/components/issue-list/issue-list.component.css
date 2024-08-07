@@ -1,0 +1,21 @@
+/* Add this CSS to your styles.css file */
+@keyframes backgroundAnimation {
+    0% { background-color: #f6d365; }
+    50% { background-color: #fda085; }
+    100% { background-color: #f6d365; }
+  }
+  
+  .container {
+    animation: backgroundAnimation 10s ease infinite;
+  }
+  
+  .issue-list .card {
+    transition: transform 0.3s ease;
+  }
+  
+  .issue-list .card:hover {
+    transform: translateY(-5px);
+  }
+  
+
+  

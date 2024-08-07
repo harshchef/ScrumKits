@@ -50,22 +50,7 @@ public class CommentService {
         return updatedComment;
     }
 
-    // public Comment updateComment(Long id, Comment commentDetails) {
-    //     Comment comment = commentRepository.findById(id)
-    //         .orElseThrow(() -> new ResourceNotFoundException("Comment not found for this id :: " + id));
-    
-    //     comment.setText(commentDetails.getText());
-    
-    //     // You need to fetch the Issue entity if the ID is provided in the request
-    //     if (commentDetails.getIssue() != null && commentDetails.getIssue().getId() != null) {
-    //         Issue issue = issueRepository.findById(commentDetails.getIssue().getId())
-    //             .orElseThrow(() -> new ResourceNotFoundException("Issue not found for this id :: " + commentDetails.getIssue().getId()));
-    //         comment.setIssue(issue);
-    //     }
-    
-    //     final Comment updatedComment = commentRepository.save(comment);
-    //     return updatedComment;
-    // }
+
     
     public List<Comment> getCommentsByIssueId(Long issueId) {
         return commentRepository.findByIssueId(issueId);

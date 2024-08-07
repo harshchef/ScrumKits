@@ -34,7 +34,26 @@ export class CommentService {
 
   updateComment(commentId: number, comment: Comment): Observable<Comment> {
     console.log(comment)
-    return this.http.put<Comment>(`${this.baseUrl}/${commentId}`, comment);
+    // const payload = {
+    //   id:comment.id,
+    //   text: comment.text,
+    //   issueId:comment.issueId
+    //   // issue: {
+    //   //   id: comment.issueId
+    //   // }
+    // };
+
+
+    const requestPayload = {
+      id:comment.id,
+      text: comment.text,
+      issue: {
+        id: comment.issueId
+      }
+    };
+    return this.http.post<Comment>(`${this.baseUrl}`, requestPayload);
+  //  console.log(payload)
+   // return this.http.put<Comment>(`${this.baseUrl}/${commentId}`, comment);
   }
 
 
