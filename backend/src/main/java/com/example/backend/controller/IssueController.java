@@ -3,6 +3,7 @@
 package com.example.backend.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +42,20 @@ public class IssueController {
         Issue issue = issueService.getIssue(id).orElseThrow(() -> new ResourceNotFoundException("Issue not found for this id :: " + id));
         return ResponseEntity.ok().body(issue);
     }
+        @GetMapping("/resolved")
+    public List<Issue> getResolvedIssues() {
+        return issueService.getAllIssues().stream()
+                           .filter(Issue::isResolved)
+                           .collect(Collectors.toList());
+    }
 
+    @GetMapping("/unresolved")
+    public List<Issue> getUnresolvedIssues() {
+        return issueService.getAllIssues().stream()
+                           .filter(issue -> !issue.isResolved())
+                           .collect(Collectors.toList());
+    }
+    
     @GetMapping
     public List<Issue> getAllIssues() {
         return issueService.getAllIssues();
