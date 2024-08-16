@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.exception.ResourceNotFoundException;
@@ -41,7 +42,11 @@ public class CommentController {
     }
   
 
-
+        
+    @GetMapping("/by-issue-ids")
+    public List<Comment> getCommentsByIssueIdsComplex(@RequestParam List<Long> issueIds) {
+        return commentService.getCommentsByIssueIds(issueIds);
+    }
 
     @GetMapping
     public List<Comment> getAllComments() {
@@ -58,5 +63,31 @@ public class CommentController {
     public ResponseEntity<Void> deleteComment(@PathVariable Long id) {
         commentService.deleteComment(id);
         return ResponseEntity.noContent().build();
+    }
+
+
+
+
+    @GetMapping("/by-issue-id-text-pattern")
+    public List<Comment> getCommentsByIssueIdAndTextPattern(@RequestParam Long issueId, @RequestParam String textPattern) {
+        return commentService.getCommentsByIssueIdAndTextPattern(issueId, textPattern);
+    }
+
+    // API to get comments by issue ID and sort by text length
+    @GetMapping("/by-issue-id-order-by-length")
+    public List<Comment> getCommentsByIssueIdOrderByTextLength(@RequestParam Long issueId) {
+        return commentService.getCommentsByIssueIdOrderByTextLength(issueId);
+    }
+
+    // API to get comments by multiple issue IDs
+    @GetMapping("/by-issue-ids")
+    public List<Comment> getCommentsByIssueIds(@RequestParam List<Long> issueIds) {
+        return commentService.getCommentsByIssueIds(issueIds);
+    }
+
+    // API to get comments by issue ID and exclude specific words
+    @GetMapping("/by-issue-id-excluding-word")
+    public List<Comment> getCommentsByIssueIdExcludingWord(@RequestParam Long issueId, @RequestParam String excludedWord) {
+        return commentService.getCommentsByIssueIdExcludingWord(issueId, excludedWord);
     }
 }

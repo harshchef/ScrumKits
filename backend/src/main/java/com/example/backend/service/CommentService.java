@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.example.backend.exception.ResourceNotFoundException;
 import com.example.backend.model.Comment;
 import com.example.backend.repository.CommentRepository;
-import com.example.backend.repository.IssueRepository;
 
 @Service
 public class CommentService {
@@ -19,7 +18,7 @@ public class CommentService {
     @Autowired
     private CommentRepository commentRepository;
     @Autowired
-    private IssueRepository issueRepository;
+  
     public Comment saveComment(Comment comment) {
         return commentRepository.save(comment);
     }
@@ -50,8 +49,29 @@ public class CommentService {
     }
 
 
-    
+    public List<Comment> getCommentsByIssueIds(List<Long> issueIds) {
+        return commentRepository.findByIssueIdIn(issueIds);
+    }
     public List<Comment> getCommentsByIssueId(Long issueId) {
         return commentRepository.findByIssueId(issueId);
     }
+
+
+
+
+    public List<Comment> getCommentsByIssueIdAndTextPattern(Long issueId, String textPattern) {
+        return commentRepository.findByIssueIdAndTextPattern(issueId, textPattern);
+    }
+
+    public List<Comment> getCommentsByIssueIdOrderByTextLength(Long issueId) {
+        return commentRepository.findByIssueIdOrderByTextLengthDesc(issueId);
+    }
+
+
+
+    public List<Comment> getCommentsByIssueIdExcludingWord(Long issueId, String excludedWord) {
+        return commentRepository.findByIssueIdExcludingWord(issueId, excludedWord);
+    }
+
+
 }
