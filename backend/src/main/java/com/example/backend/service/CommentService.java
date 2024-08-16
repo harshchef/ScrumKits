@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.backend.exception.ResourceNotFoundException;
 import com.example.backend.model.Comment;
-import com.example.backend.model.Issue;
 import com.example.backend.repository.CommentRepository;
 import com.example.backend.repository.IssueRepository;
 
@@ -44,7 +43,7 @@ public class CommentService {
                 .orElseThrow(() -> new ResourceNotFoundException("Comment not found for this id :: " + id));
 
         comment.setText(commentDetails.getText());
-        comment.setIssue(commentDetails.getIssue()); // Assuming you may want to update the associated issue as well
+        comment.setIssue(commentDetails.getIssue()); 
     
         final Comment updatedComment = commentRepository.save(comment);
         return updatedComment;
